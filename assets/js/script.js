@@ -1,6 +1,7 @@
 let $window = $(window);
 let currentDayEl = $("#currentDay");
 let timeBlockEls = $("textarea");
+let buttonEls = $("button");
 
 let startHour = Number(moment().format("H"));
 let currentDay = moment().format("dddd, MMMM Do");
@@ -9,6 +10,14 @@ currentDayEl.text(currentDay);
 colorBlocks();
 updateDate();
 updateHour();
+
+// saves events to local storage
+buttonEls.on('click', function(event){
+    let textareaEl = $(event.target).siblings('textarea');
+    let eventText = textareaEl.val();
+    let eventHour = textareaEl.attr('data-hour');
+    localStorage.setItem(eventHour, eventText);
+})
 
 // updates date when window is focused on!
 function updateDate() {
@@ -45,3 +54,4 @@ function colorBlocks() {
             $(this).addClass('future');
         }})
 }
+

@@ -72,10 +72,10 @@ textarea {
 
 .saveBtn i{
   font-style: normal;
-  font-size:30px;
+  font-size:20px;
 }
 
 .saveBtn i:hover {
-  font-size: 40px;
+  font-size: 30px;
   transition: all 0.3s ease-in-out;
 }
