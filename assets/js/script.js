@@ -57,9 +57,9 @@ function updateHour() {
 // colors the time blocks depending on current time
 function colorBlocks() {
     $.each(timeBlockEls, function(){
-        if ($(this).attr('data-hour') < 13){
+        if ($(this).attr('data-hour') < startHour){
             $(this).addClass('past');
-        }else if ($(this).attr('data-hour') == 13){
+        }else if ($(this).attr('data-hour') == startHour){
             $(this).addClass('present');
         }else{
             $(this).addClass('future');
