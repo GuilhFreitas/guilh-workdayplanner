@@ -11,9 +11,24 @@ colorBlocks();
 updateDate();
 updateHour();
 
+// retrieves events from local storage and displays them appropriately
+$.each(timeBlockEls, function(){
+    let dataHour = $(this).attr('data-hour');
+    let savedEvent = localStorage.getItem(dataHour);
+    if (savedEvent !== null){
+        $(this).text(savedEvent);
+    }
+})
+
 // saves events to local storage
 buttonEls.on('click', function(event){
-    let textareaEl = $(event.target).siblings('textarea');
+    let textareaEl;
+    let element = event.target;
+    if (element.matches('i')){
+        textareaEl = $(event.target).parent().siblings('textarea');
+    }else{
+        textareaEl = $(event.target).siblings('textarea');
+    }
     let eventText = textareaEl.val();
     let eventHour = textareaEl.attr('data-hour');
     localStorage.setItem(eventHour, eventText);
