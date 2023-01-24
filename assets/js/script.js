@@ -46,7 +46,7 @@ function updateDate() {
 function updateHour() {
     let timeInterval = setInterval(function() {
         let newHour = Number(moment().format("H"));
-        if(newHour > startHour){
+        if(newHour > startHour || newHour == 0){
             startHour = newHour;
             colorBlocks();
         }
@@ -57,15 +57,11 @@ function updateHour() {
 // colors the time blocks depending on current time
 function colorBlocks() {
     $.each(timeBlockEls, function(){
-        console.log('each running')
-        if ($(this).attr('data-hour') < startHour){
-            console.log('if running')
+        if ($(this).attr('data-hour') < 13){
             $(this).addClass('past');
-        }else if ($(this).attr('data-hour') == startHour){
-            console.log('elif running')
+        }else if ($(this).attr('data-hour') == 13){
             $(this).addClass('present');
         }else{
-            console.log('else running')
             $(this).addClass('future');
         }})
 }
